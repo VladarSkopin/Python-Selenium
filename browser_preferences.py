@@ -13,3 +13,7 @@ options.set_preference('general.useragent.override', 'Garrett Master Thief')  # 
 
 browser = webdriver.Firefox(options=options)
 browser.get('https://www.whatismybrowser.com/detect/what-is-my-user-agent/')  # website to check your user agent
+
+time.sleep(5)
+browser_normal.quit()
+browser.quit()
