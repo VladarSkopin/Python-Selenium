@@ -1,13 +1,16 @@
-import time
-from selenium import webdriver
+# This is a sample Python script.
 
-browser = webdriver.Firefox()
-browser.get("https://duckduckgo.com")
-time.sleep(5)
-browser.get("https://google.com")
-time.sleep(2)
-browser.save_screenshot('1.png')
-time.sleep(3)
-browser.refresh()
-time.sleep(2)
-browser.quit()
+def string_splosion(str):
+    result = ''
+    count = 0
+    while count < len(str):
+        buffer_word = str[0:count + 1]
+        result += buffer_word
+        count += 1
+    return result
+
+
+if __name__ == '__main__':
+    print(string_splosion('Code'))
+    print(string_splosion('abc'))
+    print(string_splosion('ab'))
