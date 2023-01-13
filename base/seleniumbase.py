@@ -1,3 +1,4 @@
+from selenium.common import StaleElementReferenceException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as ExCon
@@ -8,7 +9,7 @@ from typing import List
 class SeleniumBase:
     def __init__(self, driver):
         self.driver = driver
-        self.__wait = WebDriverWait(driver, 15, 0.2)
+        self.__wait = WebDriverWait(driver, 15, 0.2, ignored_exceptions=StaleElementReferenceException)
 
     def __get_selenium_by(self, find_by: str) -> dict:  # returns dict
         find_by = find_by.lower()
