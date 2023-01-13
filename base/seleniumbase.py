@@ -37,4 +37,9 @@ class SeleniumBase:
     def are_present(self, find_by: str, locator: str, locator_name: str = None) -> List[WebElement]:
         return self.__wait.until(ExCon.presence_of_all_elements_located((self.__get_selenium_by(find_by), locator)), locator_name)
 
-    #  ExCon.element_to_be_clickable()  # to click a button
+    def get_text_from_web_elements(self, elements: List[WebElement]) -> List[str]:
+        return [element.text for element in elements]  # list[str]
+
+    def get_element_by_text(self, elements: List[WebElement], element_name: str) -> WebElement:
+        element_name = element_name.lower()
+        return [element for element in elements if element.text.lower() == element_name][0]  # return first element found
