@@ -22,7 +22,8 @@ class TestHomepage:
         for idx in range(len(elements)):
         # for idx in range(12):  # we have 12 tabs in total
             homepage_nav.get_nav_links()[idx].click()
+            # print('INDEX: ' + str(idx) + ' ' + homepage_nav.get_nav_links()[idx].text)
+            print(f'INDEX: {str(idx) } {homepage_nav.get_nav_links()[idx].text}')
             homepage_nav.driver.delete_all_cookies()
             time.sleep(3)
         time.sleep(15)  # implicitly wait
-
