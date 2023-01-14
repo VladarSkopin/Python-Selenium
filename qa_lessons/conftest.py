@@ -32,6 +32,6 @@ def setup(request, get_webdriver):  # request = built-in fixture
     if request.cls is not None:
         request.cls.driver = driver
     driver.get(url)  # if request is not a class
-    driver.delete_all_cookies()
+    # driver.delete_all_cookies()
     yield driver
     driver.quit()  # close the whole browser
