@@ -15,7 +15,6 @@ browser.get('https://www.amazon.com/b?node=23508887011&pf_rd_r=G5SC0JMFD59WHBTN7
 figures_tile = wait.until(ExCon.visibility_of_element_located((By.CSS_SELECTOR, 'a[aria-label="Action Figures"]')), 'figures tile')
 
 time.sleep(3)
-
 figures_tile.click()
 '''div_list = wait.until(ExCon.visibility_of_all_elements_located((By.CSS_SELECTOR, "div.bxc-grid-overlay")), 'div list')
 print(len(div_list))  # 15
@@ -56,13 +55,13 @@ element_list = wait.until(ExCon.visibility_of_all_elements_located((By.CSS_SELEC
 for element in element_list:
     title = element.find_element(By.TAG_NAME, 'h2').text
     img = 'No image'
+    link = element.find_element(By.CSS_SELECTOR, "a[class='a-link-normal s-no-outline']").get_attribute('href')
     try:
         "div[class='a-section a-spacing-base'] img.s-image"
-        # img = wait.until(ExCon.visibility_of_element_located(element.find_element(By.CSS_SELECTOR, '.s-image')), 'img src').get_attribute("src")
         img = element.find_element(By.CSS_SELECTOR, '.s-image').get_attribute("src")
     except:
         print(f'NO IMAGE FOUND FOR "{title}" !')
-    print(f'TITLE = {title}, \nIMAGE SRC = {img}')
+    print(f'TITLE = {title}, \nIMAGE SRC = {img}, \nLINK = {link} \n-----')
 
 time.sleep(10)
 browser.quit()
