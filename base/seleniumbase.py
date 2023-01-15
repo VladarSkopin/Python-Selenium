@@ -9,7 +9,8 @@ from typing import List
 class SeleniumBase:
     def __init__(self, driver):
         self.driver = driver
-        self.__wait = WebDriverWait(driver, 15, 0.2, ignored_exceptions=StaleElementReferenceException)
+        # self.__wait = WebDriverWait(driver, 15, 0.2, ignored_exceptions=StaleElementReferenceException)
+        self.__wait = WebDriverWait(driver, 15, 0.2)
 
     def __get_selenium_by(self, find_by: str) -> dict:  # returns dict
         find_by = find_by.lower()

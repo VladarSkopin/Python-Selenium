@@ -9,7 +9,7 @@ def get_chrome_options():
     options = chrome_options()
     options.add_argument('chrome')  # Use headless if you do not need a browser UI
     options.add_argument('--start-maximized')
-    options.add_argument('--window-size=1200,600')
+    options.add_argument('--window-size=1200,900')
     return options
 
 
@@ -32,6 +32,6 @@ def setup(request, get_webdriver):  # request = built-in fixture
     if request.cls is not None:
         request.cls.driver = driver
     driver.get(url)  # if request is not a class
-    driver.delete_all_cookies()
+    # driver.delete_all_cookies()
     yield driver
     driver.quit()  # close the whole browser
