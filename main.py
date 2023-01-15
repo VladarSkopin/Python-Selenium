@@ -22,8 +22,9 @@ print(len(div_list))  # 15
 for item in div_list:
     print(item.text)'''
 time.sleep(3)
+browser.save_screenshot('figures_page_1.png')
 
-element_list = wait.until(ExCon.visibility_of_all_elements_located((By.CSS_SELECTOR, "div[class='a-section a-spacing-none a-spacing-top-small s-title-instructions-style']")))
+element_list = wait.until(ExCon.visibility_of_all_elements_located((By.CSS_SELECTOR, "div[class='a-section a-spacing-base']")))
 print(len(element_list))
 for element in element_list:
     print(f'TEXT = {element.text}')
@@ -42,7 +43,7 @@ for element in element_list_2:
     print(f'TITLE = {element.text}')
 
 time.sleep(3)
-browser.save_screenshot('figures_third_page.png')
+browser.save_screenshot('figures_page_3.png')
 browser.back()
 
 print('---------------')
@@ -50,13 +51,15 @@ print('GOING BACK TO PAGE 1')
 print('---------------')
 
 # refresh stale elements on page 1
-element_list = wait.until(ExCon.visibility_of_all_elements_located((By.CSS_SELECTOR, "div[class='a-section a-spacing-none a-spacing-top-small s-title-instructions-style']")))
+element_list = wait.until(ExCon.visibility_of_all_elements_located((By.CSS_SELECTOR, "div[class='a-section a-spacing-base']")))
 
 for element in element_list:
     title = element.find_element(By.TAG_NAME, 'h2').text
     img = 'No image'
     try:
-        img = wait.until(ExCon.visibility_of_element_located((By.CSS_SELECTOR, '.s-image')), 'img src').get_attribute("src")
+        "div[class='a-section a-spacing-base'] img.s-image"
+        # img = wait.until(ExCon.visibility_of_element_located(element.find_element(By.CSS_SELECTOR, '.s-image')), 'img src').get_attribute("src")
+        img = element.find_element(By.CSS_SELECTOR, '.s-image').get_attribute("src")
     except:
         print(f'NO IMAGE FOUND FOR "{title}" !')
     print(f'TITLE = {title}, \nIMAGE SRC = {img}')
